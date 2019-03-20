@@ -9,6 +9,7 @@ namespace :grape do
 
     method_width, path_width, version_width, desc_width = widths(routes, mapping)
 
+    puts 'Prefix Verb URI Pattern   Controller#Action'
     routes.each do |api|
       method = api.first.send(mapping[:method]).to_s.rjust(method_width)
       path = api.first.send(mapping[:path]).to_s.ljust(path_width)
@@ -17,7 +18,7 @@ namespace :grape do
       version_with_prefix=version.empty? ? '/'+version : ''
       desc = api.first.send(mapping[:description]).to_s.ljust(desc_width)
       #  Prefix Verb URI Pattern   Controller#Action
-      puts "##{desc}     #{method}    #{version_with_prefix}#{path}    #{path}  "
+      puts "#{desc}     #{method}    #{version_with_prefix}#{path}    #{path}  "
     end
   end
 
