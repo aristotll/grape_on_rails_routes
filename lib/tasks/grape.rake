@@ -15,7 +15,7 @@ namespace :grape do
       path = api.first.send(mapping[:path]).to_s.ljust(path_width)
       # @type [String]
       version = api.first.send(mapping[:version]).to_s.ljust(version_width).chomp
-      version_with_prefix=version.empty? ? '/'+version : ''
+      version_with_prefix=version.empty? ? '' : '/'+version
       desc = api.first.send(mapping[:description]).to_s.ljust(desc_width)
       #  Prefix Verb URI Pattern   Controller#Action
       puts "#{desc}     #{method}    #{version_with_prefix}#{path}    #{path}  "
